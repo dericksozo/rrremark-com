@@ -1,0 +1,5 @@
+database.rules.json
+firebase.json
+.firebaserc
+node_modules/
+.DS_Store

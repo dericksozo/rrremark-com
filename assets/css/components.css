@@ -1,0 +1,1004 @@
+html {
+    font-size: 16px;
+}
+
+body {
+
+    background-color: var(--bg-color);
+
+    width: 100%;
+
+    font-family: var(--font-family-sansSerif);
+    color: var(--text-color);
+
+    line-height: var(--line-height-default);
+    font-size: 100%;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    overflow: hidden;
+}
+
+/* Style the placeholders */
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--subdued-color);
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--subdued-color);
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+  color: var(--subdued-color);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: var(--subdued-color);
+}
+
+.Constrainer {
+    padding-left: var(--scale-default);
+    padding-right: var(--scale-default);
+}
+
+.Constrainer.Constrainer--fullWidth {
+    width: 100%;
+}
+
+.Headline { /* For branding purposes at the top of the page */
+    color: var(--primary-color);
+    font-family: var(--font-family-serif);
+    font-size: var(--scale-one-up);
+}
+
+.Link {
+    color: var(--primary-color);
+    font-family: var(--font-family-mono);
+    font-size: var(--scale-default);
+}
+
+.MenuProjectTitleStats-title,
+.ProjectInfo-title {
+    color: var(--primary-color);
+    font-family: var(--font-family-serif);
+    font-size: var(--scale-two-up);
+    line-height: var(--line-height-header);
+}
+
+.ProjectInfo-stats {
+    color: var(--subdued-color);
+    font-family: var(--font-family-mono);
+    font-size: var(--scale-default);
+}
+
+.MenuProjectTitleStats-title {
+
+    font-size: var(--scale-default);
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Note */
+
+.Note.Note--timerNote .Note-text,
+.Note.Note--timerNote .Note-textArea {
+    color: var(--bg-color);
+}
+
+.Note.Editable .Note-text,
+.Note.Editable .Note-textArea {
+    margin-right: var(--scale-two-down);
+}
+/* End Note */
+
+.Todos {
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--bg-subdued-color);
+    padding: var(--scale-default);
+}
+
+.Todos.Todos--dragging .Todo:not(.Todo--beingDragged) {
+    opacity: 0.4;
+}
+
+.Todo {
+    padding-top: var(--scale-one-down);
+    padding-bottom: var(--scale-one-up);
+    background-color: var(--primary-color);
+}
+
+.Todo-text {
+    font-size: var(--scale-one-half-up);
+    color: var(--bg-color);
+
+    cursor: text;
+}
+
+.Todo.Todo--completed {
+    padding-bottom: var(--scale-one-down);
+    background-color: var(--primary-light-color);
+    border: 1px solid var(--primary-light-color);
+}
+
+.Todo.Todo--isEditing .Todo-text {
+    border: 1px solid var(--primary-light-color);
+}
+
+.Todo--completed .Todo-text {
+    text-decoration: line-through;
+    color: var(--primary-subdued-color);
+}
+
+.Todo--readyToDrag {
+    box-shadow: 2px 3px 10px 0px #2d2c88;
+}
+
+.Button {
+    background-color: transparent;
+    border: 2px dashed var(--subdued-color);
+    color: var(--subdued-color);
+
+    padding-top: var(--scale-two-down);
+    padding-bottom: var(--scale-two-down);
+}
+
+.Button--full {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.Button--blank {
+    border: none;
+    text-align: left;
+    padding: 0;
+}
+
+.Button--primary {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+
+    border: none;
+}
+
+.Button--big {
+    font-size: var(--scale-two-up);
+    font-weight: bold;
+}
+
+.Button--primaryLight {
+    border-color: var(--primary-light-color);
+    color: var(--primary-light-color);
+}
+
+.Separator {
+    color: var(--subdued-color);
+    text-align: center;
+}
+
+.Logo {
+    width: var(--scale-three-up);
+    height: auto;
+}
+
+.Menu {
+    position: fixed;
+    bottom: 0;
+    z-index: var(--z-index-one-up);
+
+    width: 100%;
+    min-height: var(--scale-four-up);
+
+    background-color: var(--bg-color);
+    box-shadow: 0px -3px 19px rgb(146, 146, 146);
+    transition: all 0.2s ease-in-out;
+
+}
+
+.Menu-display {
+    padding-left: var(--scale-one-down);
+    padding-right: var(--scale-one-down);
+
+    position: absolute;
+    bottom: var(--scale-default);
+    left: 0;
+    right: 0;
+}
+
+.Menu.Menu--hidden {
+    transform: translateY(110%);
+}
+
+.Menu.Menu--noShadow {
+    box-shadow: none;
+}
+
+.Menu-title {
+    font-family: var(--font-family-mono);
+    color: var(--subdued-color);
+}
+
+.Menu > .Arrow {
+    transform: rotate(180deg);
+}
+
+.Menu.is-Menu-expanded {
+    min-height: 100vh;
+    overflow: scroll;
+}
+
+.Menu.is-Menu-expanded .Menu-contents {
+    display: block;
+}
+
+.Menu.is-Menu-expanded .Arrow {
+    transform: rotate(0deg);
+}
+
+.Menu-contents {
+    display: none;
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+}
+
+.MenuProject-title {
+    line-height: var(--line-height-secondary-header);
+    font-size: var(--scale-one-up);
+
+    cursor: pointer;
+}
+
+.MenuProject-title:hover {
+    text-decoration: underline;
+}
+
+/* Stuff related to the loading boxes and all of that */
+.MenuProjectLoader-longBox,
+.MenuProjectLoader-box {
+    width: var(--scale-default);
+    height: var(--scale-default);
+    background-color: var(--subdued-color);
+}
+
+.MenuProjectLoader-longBox {
+    width: 75%;
+    height: var(--scale-one-up);
+}
+
+.MenuProjectLoader-box {
+    display: inline-block;
+    margin-right: var(--scale-one-down);
+}
+
+.animated-background {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+  animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  background: #cccccc;
+  /* background: -webkit-gradient(linear, left top, right top, color-stop(8%, #cccccc), color-stop(18%, #bbbbbb), color-stop(33%, #aaaaaa)); */
+  background: -webkit-linear-gradient(left, #cccccc 8%, #aaaaaa 18%, #cccccc 33%);
+  background: linear-gradient(to right, #cccccc 8%, #aaaaaa 18%, #cccccc 33%);
+  -webkit-background-size: 1024px 100px;
+  background-size: 1024px 100px;
+  position: relative;
+}
+
+@-webkit-keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0
+  }
+  100% {
+    background-position: 468px 0
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0
+  }
+  100% {
+    background-position: 468px 0
+  }
+}
+
+.Arrow {
+    width: var(--scale-two-up);
+    height: var(--scale-two-up);
+}
+
+.Arrow::before,
+.Arrow::after {
+    content: " ";
+    display: block;
+
+    position: relative;
+    bottom: -9px;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: var(--scale-default) solid transparent;
+    border-right: var(--scale-default) solid transparent;
+    border-top: var(--scale-default) solid var(--primary-color);
+}
+
+.Arrow::after {
+
+    top: -10px;
+    left: 0;
+    border-top: var(--scale-default) solid var(--bg-color);
+}
+
+.Form-label,
+.Form-input {
+    display: block;
+    font-size: var(--scale-two-up);
+}
+
+.Form-label {
+    color: var(--primary-color);
+}
+
+.Form-input {
+    background: transparent;
+    border: 1px solid var(--subdued-color);
+    color: var(--text-color);
+    width: 100%;
+    padding-left: var(--scale-two-down);
+    padding-right: var(--scale-two-down);
+}
+
+.Form-error {
+    color: var(--error-color);
+}
+
+.TopSpacer {
+    padding-top: var(--scale-three-up);
+}
+
+.TopSpacer.TopSpacer--oneUp {
+    padding-top: var(--scale-one-up);
+}
+
+.TopSpacer.TopSpacer--default {
+    padding-top: var(--scale-default);
+}
+
+.TopSpacer.TopSpacer--oneDown {
+    padding-top: var(--scale-one-down);
+}
+
+.TopSpacer.TopSpacer--twoDown {
+    padding-top: var(--scale-two-down);
+}
+
+.TopSpacer.TopSpacer--fiveUp {
+    padding-top: var(--scale-five-up);
+}
+
+.X {
+    display: inline-block;
+    position: relative;
+    z-index: var(--z-index-default);
+
+    width: var(--scale-one-up);
+    height: var(--scale-one-up);
+
+    cursor: pointer;
+}
+
+.X::before,
+.X::after {
+    content: " ";
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 1px;
+    height: var(--scale-one-up);
+
+    background-color: var(--primary-light-color);
+
+    transform: rotate(45deg);
+}
+
+.X::after {
+    transform: rotate(-45deg);
+}
+
+.Dragger {
+    background-color: var(--primary-light-color);
+
+    -webkit-mask-image: url("../svg/menu2.svg");
+    mask-image: url("../svg/menu2.svg");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+
+    width: var(--scale-one-up);
+    height: var(--scale-one-up);
+
+    position: absolute;
+    right: calc(-1 * var(--scale-one-down));
+
+    cursor: move;
+}
+
+.Editable {
+    position: relative;
+}
+
+.Editable::before,
+.Editable::after {
+    opacity: 0;
+}
+
+.Editable:hover::before,
+.Editable:hover::after,
+.Editable.Editable--alwaysShow::before,
+.Editable.Editable--alwaysShow::after {
+    opacity: 1;
+    cursor: text;
+}
+
+/* I really want to figure out why I need to do this in the first place? */
+/* Feels Hacky. Is there a better way to approach the CSS? */
+.Editable.Editable--alwaysShow::before,
+.Editable.Editable--alwaysShow::after {
+    z-index: -1;
+}
+
+.Editable::before,
+.Editable::after {
+    pointer-events: none;
+}
+
+.Editable::before {
+    content: " ";
+
+    width: calc(var(--scale-default) + 100%);
+    height: calc(var(--scale-one-up) + 100%);
+
+    position: absolute;
+    top: calc(var(--scale-one-down) * -1);
+    left: calc(var(--scale-default) * -1);
+
+    border: 1px solid var(--primary-light-color);
+    border-top-left-radius: var(--scale-default);
+
+    transition: opacity 0.2s ease-in-out;
+}
+
+.Editable::after {
+    content: "edit";
+
+    position: absolute;
+    left: calc(var(--scale-default) * -1);
+    top: calc(var(--scale-one-down) * -1);
+
+    font-family: var(--font-family-icons);
+    font-size: var(--scale-default);
+    color: var(--primary-color);
+
+    background-color: var(--bg-color);
+
+    transition: opacity 0.2s ease-in-out;
+}
+
+.Editable.Editable--primary::after {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.Editable.Editable--small::before {
+    height: calc(var(--scale-one-down) + 100%);
+    top: calc(var(--scale-two-down) * -1);
+}
+
+.Editable.Editable--noIcon:hover::after {
+    display: none;
+}
+
+.TimerNotesIcon {
+    float: right;
+    -webkit-shape-outside: circle();
+    shape-outside: circle();
+
+    border-radius: 50%;
+
+    height: var(--scale-three-up);
+    width: var(--scale-three-up);
+
+    margin-top: var(--scale-one-down);
+}
+
+.TimerNotesIcon-text {
+    font-size: var(--scale-one-down);
+    font-family: var(--font-family-mono);
+}
+
+.TimerNotesIcon-icon {
+    display: inline-block;
+
+    margin-left: var(--scale-two-down);
+    font-size: var(--scale-one-up);
+}
+
+.TimerNotesIcon-text,
+.TimerNotesIcon-icon {
+    color: var(--primary-color);
+}
+
+.TimerNotesIcon.TimerNotesIcon--white .TimerNotesIcon-text,
+.TimerNotesIcon.TimerNotesIcon--white .TimerNotesIcon-icon {
+    color: var(--bg-color);
+}
+
+.Timer,
+.NotesCalendar {
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: var(--z-index-four-up);
+
+}
+
+/* Timer */
+.Timer {
+    background-color: var(--primary-color);
+
+    display: flex;
+}
+
+.Timer .Note--timerNote {
+    display: none;
+}
+
+.Timer .Timer--constrainer {
+    align-self: center;
+}
+
+.Timer.is-Timer-inputtingNote {
+    padding-top: var(--scale-three-up);
+}
+
+.Timer.is-Timer-inputtingNote .Timer--constrainer {
+    align-self: flex-start;
+}
+
+/* .Timer.is-Timer-inputtingNote button, */
+.Timer.is-Timer-inputtingNote .Timer-timer {
+    display: none;
+}
+
+.Timer.is-Timer-inputtingNote .Note--timerNote {
+    display: block;
+}
+
+.Timer.is-Timer-inputtingNote .Timer-contents::before {
+    content: "album";
+}
+
+.Timer.is-Timer-inputtingNote .Timer-info {
+    margin-bottom: var(--scale-one-up);
+}
+
+.Timer-timer {
+    font-family: var(--font-family-serif);
+    color: var(--bg-color);
+    font-size: var(--scale-four-up);
+    text-align: center;
+}
+
+.Timer-info {
+    color: var(--bg-color);
+    overflow: hidden;
+    max-height: var(--scale-one-up);
+}
+
+.Timer-infoTitle,
+.Timer-intention {
+    display: block;
+    float: left;
+}
+
+/* TODO: I'm not liking these random numbers like 25% and 75% and 94. Ugh. */
+
+.Timer-infoTitle {
+    width: 25%;
+    max-width: 94px;
+}
+
+.Timer-intention {
+    width: 75%;
+}
+
+.Timer-info.Timer-info--completedTimer .Timer-infoTitle {
+    width: 33%;
+    max-width: 196px;
+}
+
+.Timer-info.Timer-info--completedTimer .Timer-intention {
+    width: 67%;
+}
+
+.Timer-intention {
+    color: var(--primary-light-color);
+
+    color: var(--primary-light-color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.Timer-contents {
+    position: relative;
+}
+
+.Timer-contents::before {
+
+    content: "clock";
+
+    display: block;
+
+    position: absolute;
+    top: calc(var(--scale-three-up) * -1);
+    left: calc(var(--scale-four-up) * -1);
+
+    font-family: var(--font-family-icons);
+    font-size: var(--scale-four-up);
+    color: var(--primary-light-color);
+
+    opacity: 0.2;
+
+    font-size: 170px; /* What the hell is this number? */
+}
+/* End Timer */
+
+/* NotesCalendar */
+
+.NotesCalendar {
+    background-color: var(--primary-color-dark);
+}
+
+.NotesCalendar-header {
+    overflow: hidden; /* Clearfix */
+}
+
+.NotesCalendar-header,
+.NotesCalendar-days {
+    background-color: var(--primary-color);
+}
+
+.NotesCalendar-header .TimerNotesIcon {
+    float: left;
+    margin: 0;
+}
+
+.NotesCalendar-monthYear {
+    text-align: center;
+    float: left;
+    width: 71%;
+
+    position: relative;
+}
+
+.NotesCalendar-month,
+.NotesCalendar-year {
+    color: var(--bg-color);
+}
+
+.NotesCalendar-month {
+    font-family: var(--font-family-serif);
+    font-size: var(--scale-two-up);
+}
+
+.NotesCalendar-year {
+    font-family: var(--font-family-mono);
+    font-size: var(--scale-default);
+
+    position: relative;
+    top: calc(-1 * var(--scale-default));
+    left: var(--scale-two-down);
+}
+
+.NoteCalendar-days {
+    border-bottom: 1px solid var(--primary-light-color);
+}
+
+.NoteCalendar-day {
+
+    cursor: pointer;
+
+    position: relative;
+
+    padding-top: var(--scale-two-down);
+    padding-bottom: var(--scale-two-down);
+    border-bottom: 1px solid var(--primary-light-color);
+
+    border: 1px solid var(--transparent-color);
+    border-bottom: none;
+}
+
+.NoteCalendar-dayName,
+.NoteCalendar-dayNumber {
+    display: block;
+
+    text-align: center;
+    font-family: var(--font-family-mono);
+    color: var(--primary-light-color);
+}
+
+.NoteCalendar-day.NoteCalendar-day--active .NoteCalendar-dayName,
+.NoteCalendar-day.NoteCalendar-day--active .NoteCalendar-dayNumber {
+    color: var(--bg-color);
+}
+
+.NoteCalendar-day.NoteCalendar-day--active:not(:hover),
+.NoteCalendar-day:hover:not(.NoteCalendar-day--inActive) {
+    background-color: var(--primary-color-dark);
+    border: 1px solid var(--primary-light-color);
+    border-bottom: none;
+}
+
+.NoteCalendar-day.NoteCalendar-day--active::before,
+.NoteCalendar-day:hover:not(.NoteCalendar-day--active)::before,
+.NoteCalendar-day:hover:not(.NoteCalendar-day--inActive)::before {
+    content: " ";
+    display: block;
+    width: 100%;
+
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+
+    height: 1px;
+
+    background-color: var(--primary-color-dark);
+}
+
+.NoteCalendar-day:hover:not(.NoteCalendar-day--active, .NoteCalendar-day--inActive) .NoteCalendar-dayName,
+.NoteCalendar-day:hover:not(.NoteCalendar-day--active, .NoteCalendar-day--inActive) .NoteCalendar-dayNumber {
+    color: var(--primary-subdued-color);
+}
+
+/* Variations */
+.NoteCalendar-day.NoteCalendar-day--inActive {
+    cursor: not-allowed;
+}
+
+.NoteEntry {
+    position: relative;
+}
+
+.NoteEntry::before,
+.NoteEntry::after {
+    content: " ";
+    display: block;
+
+    position: absolute;
+    top: 0;
+    left: calc(-1 * var(--scale-one-down));
+
+    width: var(--scale-default);
+    height: var(--scale-default);
+}
+
+.NoteEntry::before {
+    border-radius: 50%;
+
+    width: calc(var(--scale-default) + var(--scale-two-down));
+    height: calc(var(--scale-default) + var(--scale-two-down));
+    background-color: var(--primary-light-color);
+}
+
+.NoteEntry::after {
+    content: "clock";
+
+    font-family: var(--font-family-icons);
+    font-size: var(--scale-default);
+    color: var(--primary-color-dark);
+
+    top: 2px;
+    left: -8px;
+}
+
+.NoteEntry-content {
+    padding-left: var(--scale-one-up);
+    padding-bottom: var(--scale-two-up);
+    border-left: 2px solid var(--primary-light-color);
+}
+
+.NoteEntry-note {
+    color: var(--bg-color);
+}
+
+.NoteEntry-intention {
+
+    position: absolute;
+
+    left: calc(var(--scale-one-up) + var(--scale-three-down));
+    top: calc(-1 * var(--scale-default));
+
+    color: var(--primary-light-color);
+    font-size: var(--scale-one-down);
+    font-family: var(--font-family-mono);
+}
+
+.NoteEntry-startEndTime {
+    font-family: var(--font-family-sansSerif);
+    color: var(--primary-light-color);
+}
+
+.NoteEntry-startTime {
+    color: var(--bg-color);
+}
+
+.NoteEntry-startTime,
+.NoteEntry-endTime,
+.NoteEntry-focusedTime {
+    font-family: var(--font-family-mono);
+}
+
+/* End NotesCalendar */
+
+@media (min-width: 34rem) {
+    html {
+        font-size: 20px;
+    }
+
+    .ProjectInfo-title {
+        font-size: var(--scale-two-up);
+    }
+
+    .TopSpacer {
+        padding-top: var(--scale-four-up);
+    }
+
+    .Logo {
+        bottom: auto;
+        top: var(--scale-one-down);
+    }
+
+    .Menu {
+        top: 0;
+        bottom: auto;
+    }
+
+    .Menu .Arrow {
+        transform: rotate(0deg);
+    }
+
+    .Menu.Menu--hidden {
+        transform: translateY(-110%);
+    }
+
+    .Menu.is-Menu-expanded .Menu-display {
+        position: fixed;
+        max-width: 45rem;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0px -20px 0px var(--bg-color), 0px 10px 10px -8px rgb(146, 146, 146);
+        background-color: var(--bg-color);
+        z-index: var(--z-index-three-up);
+    }
+
+    .Arrow {
+        bottom: auto;
+        top: var(--scale-default);
+    }
+
+    .Arrow::after {
+        top: -14px;
+    }
+
+    .Menu.is-Menu-expanded .Arrow {
+        transform: rotate(180deg);
+    }
+
+    .Menu-contents {
+        bottom: auto;
+        top: var(--scale-four-up);
+    }
+
+    .Menu-display {
+        max-height: var(--scale-three-up);
+    }
+
+    /* Timer */
+
+    .Timer-infoTitle {
+        max-width: 120px;
+    }
+    /* End Timer*/
+}
+
+@media (min-width: 45rem) {
+
+    .Constrainer {
+        padding-left: 0;
+        padding-right: 0;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        max-width: 34rem;
+    }
+
+    .Todo {
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+
+        padding-bottom: var(--scale-one-down);
+
+        border: 1px solid var(--primary-subdued-color);
+    }
+
+    .Todo-remove,
+    .Todo-drag {
+        position: absolute;
+        display: none;
+    }
+
+    .Todo:hover .Todo-remove,
+    .Todo:hover .Todo-drag {
+        display: block;
+    }
+
+    .Todo-drag {
+        left: calc(var(--scale-one-up) * -1);
+        right: auto;
+    }
+
+    .Menu {
+        max-width: 45rem;
+
+        /* Just centering this thing. */
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+
+        box-shadow: 0px 10px 10px -8px rgb(146, 146, 146);
+    }
+
+    .Menu-display {
+        top: var(--scale-default);
+    }
+}
+
+@media (min-width: 100rem) {
+
+    html {
+        font-size: 24px;
+    }
+
+    .Arrow::after {
+        top: -18px;
+    }
+}

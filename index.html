@@ -1,0 +1,235 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="/assets/css/imports.css">
+        <link rel="stylesheet" href="/assets/css/variables.css">
+        <link rel="stylesheet" href="/assets/css/reboot.css">
+        <link rel="stylesheet" href="/assets/css/grid.css">
+        <link rel="stylesheet" href="/assets/css/utils.css">
+        <link rel="stylesheet" href="/assets/css/components.css">
+
+        <script>
+        /* Some kind of CSS fix to make up for a bug. */
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement('style')
+          msViewportStyle.appendChild(
+            document.createTextNode(
+              '@-ms-viewport{width:auto!important}'
+            )
+          )
+          document.querySelector('head').appendChild(msViewportStyle)
+        }
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <main role="main">
+
+            <div class="Menu Menu--hidden js-menu">
+
+                <div class="TopSpacer TopSpacer--oneDown">
+                    <div class="Menu-display Grid Grid--spaceBetween">
+
+                        <div class="Grid-cell--autoSize med-Grid-cell--rightSpacer-twoUp">
+                            <img src="/assets/svg/rrremark-logo.svg" class="Logo"></img>
+                        </div>
+
+                        <div class="Grid-cell--autoSize Grid-cell--center med-Grid-cell med-Grid-cell-overflowHidden med-Grid-cell--moveLeft">
+                            <div class="MenuProjectTitleStats Grid">
+                                <div class="Grid-cell Grid-cell--center Grid-cell--rightSpacer-oneUp u-hidden-sm-down" style="max-width: 60%;">
+                                    <div class="MenuProjectTitleStats-title">A big very long project name that will extend for a bit.</div>
+                                </div>
+
+                                <div class="Grid-cell--autoSize med-Grid-cell">
+                                    <div class="MenuProjectTitleStats-stats">
+                                        <input type="checkbox" checked="checked"> <span>14</span>
+                                        <input type="checkbox"> <span>12</span>
+                                        ⏰ <span>92m</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="Grid-cell--autoSize Grid-cell--center">
+                            <div class="Menu-opener Arrow js-menu-opener"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="Menu-contents u-vspace-fourUp">
+                    <div class="Constrainer">
+                        <div class="Menu-title u-vspace-default">Loading projects</div>
+                        <div class="Menu-list u-vspace-oneUp">
+                            <!-- <div class="MenuProject u-vspace-default">
+                                <div class="MenuProject-title u-vspace-twoDown">A big project name</div>
+                                <div class="MenuProject-stats">
+                                    <input type="checkbox"> 05 <input type="checkbox" checked="checked"> 10 ⌚ 95</div>
+                            </div>
+                            <div class="MenuProject">
+                                <div class="MenuProject-title u-vspace-twoDown">Content Creator Delete Site and Transfer Assets</div>
+                                <div class="MenuProject-stats">
+                                    <input type="checkbox"> 05 <input type="checkbox" checked="checked"> 10 ⌚ 95</div>
+                            </div> -->
+
+                            <div class="MenuProjectLoader u-vspace-default">
+                                <div class="MenuProjectLoader-longBox u-vspace-twoDown animated-background"></div>
+                                <div class="MenuProjectLoader-boxes">
+                                    <div class="MenuProjectLoader-box animated-background"></div>
+                                    <div class="MenuProjectLoader-box animated-background"></div>
+                                </div>
+                            </div>
+                            <div class="MenuProjectLoader u-vspace-default">
+                                <div class="MenuProjectLoader-longBox u-vspace-twoDown animated-background"></div>
+                                <div class="MenuProjectLoader-boxes">
+                                    <div class="MenuProjectLoader-box animated-background"></div>
+                                    <div class="MenuProjectLoader-box animated-background"></div>
+                                </div>
+                            </div>
+                            <div class="MenuProjectLoader u-vspace-default">
+                                <div class="MenuProjectLoader-longBox u-vspace-twoDown animated-background"></div>
+                                <div class="MenuProjectLoader-boxes">
+                                    <div class="MenuProjectLoader-box animated-background"></div>
+                                    <div class="MenuProjectLoader-box animated-background"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="Button Button--full">Create new project</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="TopSpacer">
+                <div class="Project">
+                    <div class="Grid Grid--gutters Grid--full">
+                        <div class="Grid-cell">
+                            <div class="Constrainer u-vspace-twoUp">
+                                <div class="ProjectInfo">
+                                    <div class="ProjectInfo-title u-vspace-oneDown Editable Editable--small">A big project name</div>
+                                    <div class="ProjectInfo-stats">
+                                        10 todos complete<br>
+                                        10 todos remaining<br>
+                                        95 mins on this project<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Grid Grid--gutters Grid--full">
+                        <div class="Grid-cell">
+                            <div class="Intention u-vspace-oneUp">
+
+                                <div class="Constrainer u-vspace-oneUp u-med-push-threeUp">
+                                    <div class="Note Editable">
+                                        <div class="TimerNotesIcon">
+                                            <span class="TimerNotesIcon-text">Notes</span>
+                                            <i class="TimerNotesIcon-icon ss-album"></i>
+                                        </div>
+                                        <p class="Note-text u-vspace-default">Here’s some text that I’ve concerning what I think about a todo and also probably how to go ahead and complete it. Here’s a bit more text just to make it dramatic.</p>
+                                        <p class="Note-text">Now I’m skipping places and this is probably where I’ll stop.</p>
+                                    </div>
+                                </div>
+
+                                <div class="Todos u-vspace-oneUp">
+                                    <div class="Todo">
+
+                                        <div class="Constrainer">
+                                            <div class="Grid Grid--1of4 Grid--top Grid--relative">
+                                                <div class="Grid-cell">
+                                                    <div class="X Todo-remove"></div>
+                                                </div>
+                                                <div class="Grid-cell">
+                                                    <div class="Dragger Todo-drag"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="Constrainer u-med-push-threeUp">
+                                            <div class="Grid Grid--center">
+                                                <div class="Grid-cell u-hspace-oneDown">
+                                                    <div class="Todo-text Editable Editable--primary Editable--small">A todo you need to complete and haven't completed yet.</div>
+                                                </div>
+                                                <div class="Grid-cell--autoSize">
+                                                    <input type="checkbox" class="Todo-checkbox">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="Todo Todo--completed">
+                                        <div class="Constrainer u-med-push-threeUp">
+                                            <div class="Grid Grid--center">
+                                                <div class="Grid-cell u-hspace-oneDown">
+                                                    <div class="Todo-text">A todo that you've already completed.</div>
+                                                </div>
+                                                <div class="Grid-cell--autoSize">
+                                                    <input type="checkbox" class="Todo-checkbox" checked="checked">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="Constrainer u-med-push-threeUp">
+                                    <div class="Grid Grid--gutters Grid--full sm-Grid--1of2 u-vspace-oneUp">
+                                        <div class="Grid-cell">
+                                            <button class="Button Button--full">Add another todo</button>
+                                        </div>
+                                        <div class="Grid-cell">
+                                            <button class="Button Button--full">Start a timer</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="Grid sm-Grid--1of2 Grid--gutters u-vspace-oneUp">
+                                        <div class="Grid-cell">
+                                            <div class="Separator">or</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="Grid Grid--gutters Grid--full">
+                                        <div class="Grid-cell">
+                                            <button class="Button Button--full Button--blank">Add another note</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!-- .Intention -->
+
+                            <!--
+                            <div class="Intention u-vspace-oneUp">
+                                <div class="Constrainer u-vspace-oneUp u-med-push-threeUp">
+                                    <div class="Note">
+                                        <textarea class="Note-textArea" placeholder="Add another note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div><!-- .Project -->
+            </div><!-- .TopSpacer -->
+        </main>
+
+        <script>
+        (function () {
+            var menuOpener = document.querySelector('.js-menu-opener');
+
+            menuOpener.addEventListener('click', function (event) {
+                var menu = document.querySelector('.js-menu');
+                menu.classList.toggle('is-Menu-expanded');
+            });
+
+        })();
+        </script>
+    </body>
+</html>

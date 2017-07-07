@@ -1,0 +1,48 @@
+:root {
+    --bg-color: #F1F1F1;
+    --bg-subdued-color: rgba(232, 232, 232, 1);
+    --subdued-color: #BBB;
+    --primary-color: #4745D1;
+    --primary-light-color: #8A89D9;
+    --primary-subdued-color: #5E5D8D;
+    --primary-color-dark: #343351;
+    --text-color: #333;
+    --error-color: #ec3636;
+    --transparent-color: rgba(255, 255, 255, 0);
+
+    --font-family-serif: "ClearfaceStd-Heavy", Georgia, serif;
+    --font-family-mono: "HelveticaMonospacedStd-Rg", Consolas, monospace;
+    --font-family-sansSerif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-family-icons: "SSSteedicons";
+
+    /* Font scale */
+    --scale-three-down: 0.1665rem;
+    --scale-two-down: 0.333rem;
+    --scale-one-down: 0.666rem;
+    --scale-default: 1rem;
+    --scale-one-half-up: 1.125rem;
+    --scale-one-up: 1.5rem;
+    --scale-two-up: 2.25rem;
+    --scale-three-up: 3.375rem;
+    --scale-four-up: 5.0625rem;
+    --scale-five-up: 7.59375rem;
+    /* End font scale */
+
+    /* line heights */
+    --line-height-header: 1;
+    --line-height-secondary-header: 1.13;
+    --line-height-default: 1.4;
+    /* line height */
+
+    /* z-indexes */
+    --z-index-default: 100;
+    --z-index-one-up: 200;
+    --z-index-two-up: 300;
+    --z-index-three-up: 400;
+    --z-index-four-up: 500;
+    /* z-indexes */
+
+    @custom-media --break-sm (min-width: 34rem);
+    @custom-media --break-md (min-width: 576px);
+    @custom-media --break-lg (min-width: 768px);
+}

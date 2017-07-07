@@ -1,0 +1,118 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>rrremark login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css"/>
+
+        <script>
+        /* Some kind of CSS fix to make up for a bug. */
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement('style')
+          msViewportStyle.appendChild(
+            document.createTextNode(
+              '@-ms-viewport{width:auto!important}'
+            )
+          )
+          document.querySelector('head').appendChild(msViewportStyle)
+        }
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <main role="main">
+
+            <div class="TopSpacer">
+                <div class="Grid Grid--gutters Grid--full u-vspace-twoUp">
+                    <div class="Grid-cell">
+                        <div class="Constrainer">
+                            <h1 class="Headline">login</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Grid Grid--gutters Grid--full">
+                    <div class="Grid-cell">
+                        <div class="Constrainer">
+                            <form class="Form js-login">
+                                <div class="Form-block u-vspace-oneUp">
+                                    <label class="Form-label" for="login_email">Your Email</label>
+                                    <input class="Form-input" id="login_email" type="email" placeholder="you@email.com" required>
+                                </div>
+                                <div class="Form-block u-vspace-oneDown">
+                                    <label class="Form-label" for="login_password">Password</label>
+                                    <input class="Form-input" id="login_password" type="password" required>
+                                </div>
+                                <div class="Form-block u-vspace-threeUp">
+                                    <a id="forgot_password_link" href="forgot-password.html" class="Link">Forgot your password?</a>
+                                </div>
+
+                                <div id="form_error" class="Form-block Form-error u-vspace-threeUp hidden"></div>
+
+                                <div class="Form-block">
+                                    <input type="submit" class="Button Button--full Button--primary Button--big" value="Login">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+        <script src="assets/js/database.js"></script>
+        <script>
+        (function () {
+            var $loginForm = document.querySelector(".js-login"),
+                $formErrorContainer = document.getElementById("form_error"),
+                $forgotPasswordLink = document.getElementById("forgot_password_link");
+
+            $loginForm.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+                $formErrorContainer.classList.add("hidden");
+
+                console.log("Submitting the login form");
+
+                var email = document.getElementById("login_email").value,
+                    password = document.getElementById("login_password").value;
+
+                DATABASE.loginInUser(email, password, function (message) {
+                    $formErrorContainer.innerHTML = message;
+                    $formErrorContainer.classList.remove("hidden");
+                });
+
+                return false;
+            });
+
+            $forgotPasswordLink.addEventListener("click", function () {
+
+                var email = document.getElementById("login_email").value;
+
+                if (window.localStorage && email !== "") {
+                    window.localStorage.setItem('inputted_email_address', email);
+                } else {
+                    window.localStorage.removeItem('inputted_email_address');
+                }
+
+            });
+
+            //Handle Account Status
+            firebase.auth().onAuthStateChanged(function (user) {
+                if(user) {
+                    window.location = "index.html";
+                }
+            });
+
+        }());
+        </script>
+    </body>
+</html>

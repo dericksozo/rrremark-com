@@ -1,0 +1,171 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>rrremark</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="/assets/css/style.css"/>
+
+        <script>
+        /* Some kind of CSS fix to make up for a bug. */
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement('style')
+          msViewportStyle.appendChild(
+            document.createTextNode(
+              '@-ms-viewport{width:auto!important}'
+            )
+          )
+          document.querySelector('head').appendChild(msViewportStyle)
+        }
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <main role="main">
+
+            <div id="vue_menu" class="Menu js-menu" v-bind:class="{ 'is-Menu-expanded': isExpanded }">
+
+                <img src="/assets/svg/rrremark-logo.svg" class="Logo"></img>
+
+                <div class="Arrow js-menu-opener" v-on:click="expandMenu"></div>
+
+                <div class="Menu-contents u-vspace-fourUp">
+                    <div class="Constrainer">
+                        <div class="Menu-title u-vspace-default">Projects</div>
+                        <div class="Menu-list u-vspace-oneUp">
+                            <div v-for="(project, index) in projects" class="MenuProject" v-bind:class="{ 'u-vspace-default': isNotLast(index) }">
+                                <div v-on:click="loadProject(index)" class="MenuProject-title u-vspace-twoDown">{{project.title}}</div>
+                                <div class="MenuProject-stats">
+                                    <input type="checkbox"> {{project.unCompletedTodos}} <input type="checkbox" checked="checked"> {{project.completedTodos}}</div>
+                            </div>
+                        </div>
+                        <button class="Button Button--full">Create new project</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="TopSpacer">
+                <div id="vue_project" class="Project">
+                    <div class="Grid Grid--gutters Grid--full">
+                        <div class="Grid-cell">
+                            <div class="Constrainer u-vspace-twoUp">
+                                <div class="ProjectInfo">
+                                    <editable class="ProjectInfo-title u-vspace-oneDown" placeholder="Enter your project title" v-model="project.title" v-bind:edit-flag="editingProjectTitle" v-on:editable-key-up="checkProjectTitle" v-on:non-editable-click="editProjectTitle" v-click-outside="stopEditingProjectTitle">{{project.title}}</editable>
+                                    <div v-if="showProjectStats" class="ProjectInfo-stats">
+                                        {{project.completedTodos}} todos complete<br>
+                                        {{project.unCompletedTodos}} todos remaining<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Grid Grid--gutters Grid--full">
+                        <div class="Grid-cell">
+                            <div v-for="(intention, intentionIndex) in project.intentions" class="Intention u-vspace-oneUp" v-bind:class="{ 'u-vspace-threeUp' : !isIntentionLast(intentionIndex) }">
+
+                                <div class="Constrainer u-vspace-oneUp u-med-push-threeUp">
+                                    <div class="Note">
+                                        <note ref="note" v-bind:placeholder="calculateNotePlaceHolderMessage()" v-model="intention.note" v-on:save-note="saveIntentionNote(intentionIndex)"></note>
+                                    </div>
+                                </div>
+
+                                <div class="TodosAndOptions">
+                                    <todos v-if="intentionHasTodos(intentionIndex)" v-bind:todos="intention.todos" v-bind:intention-index="intentionIndex" v-on:reorder-todos="reorderTodos">
+                                        <todo class="u-vspace-twoDown" v-for="(todo, todoIndex) in intention.todos" v-on:remove-todo="removeTodo(intentionIndex, todoIndex)" v-model="todo" v-bind:index="todoIndex" v-on:save-todos="saveTodos(intentionIndex)"></todo>
+                                    </todos>
+
+                                    <div class="Constrainer u-med-push-threeUp TodosOptions">
+                                        <div v-if="!isIntentionNoteEmpty(intentionIndex) || hasAtLeastOneTodo(intentionIndex)" class="Grid Grid--gutters Grid--full sm-Grid--1of2 u-vspace-oneUp">
+                                            <div class="Grid-cell">
+                                                <button class="Button Button--full" v-on:click="addTodo(intentionIndex)">
+                                                    <span v-if="intentionHasTodos(intentionIndex)">Add another todo</span>
+                                                    <span v-else>Add a todo</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div v-if="intentionHasTodos(intentionIndex) && isIntentionLast(intentionIndex) && hasAtLeastOneTodo(intentionIndex)" class="Grid sm-Grid--1of2 Grid--gutters">
+                                            <div class="Grid-cell u-vspace-default">
+                                                <div class="Separator">or</div>
+                                            </div>
+                                        </div>
+
+                                        <div v-if="intentionHasTodos(intentionIndex) && isIntentionLast(intentionIndex) && hasAtLeastOneTodo(intentionIndex)" class="Grid Grid--gutters Grid--full">
+                                            <div class="Grid-cell">
+                                                <button v-on:click="addIntention(intentionIndex)" class="Button Button--full Button--blank">Add another note</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div><!-- .Intention -->
+                        </div>
+                    </div>
+                </div><!-- .Project -->
+            </div><!-- .TopSpacer -->
+        </main>
+
+        <script type="text/x-template" id="vue_tmpl_note">
+            <textarea v-click-outside="stopEditingNote" v-if="value.isEditing" v-bind:placeholder="placeholder" class="Note-textArea u-vspace-default" v-on:keyup="updateNote" rows="1">{{value.text}}</textarea>
+            <div v-else-if="value.isEditing === false">
+                <button v-if="isBlank()" class="Button Button--full Button--blank" v-on:click="editNote">{{placeholder}}</button>
+                <p v-else class="Note-text u-vspace-default" v-on:click="editNote" v-for="(splicedNote, index) in splicedNotes">{{splicedNote}}</p>
+            </div>
+        </script>
+
+        <script type="text/x-template" id="vue_tmpl_todos">
+            <div class="Todos u-vspace-oneUp"><slot></slot></div>
+        </script>
+
+        <script type="text/x-template" id="vue_tmpl_todo">
+            <div class="Todo" v-bind:class="{ 'Todo--completed' : value.isCompleted, 'Todo--isEditing': value.isEditing, 'Todo--readyToDrag': readyToDrag }">
+
+
+                <div v-if="!value.isCompleted" class="Constrainer">
+                    <div class="Grid Grid--1of4 Grid--top Grid--relative">
+                        <div class="Grid-cell">
+                            <div v-on:click="removeTodo" class="X Todo-remove"></div>
+                        </div>
+                        <div class="Grid-cell">
+                            <div v-on:mouseover="readyToDrag = true" v-on:mouseleave="readyToDrag = false" class="Dragger Todo-drag"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Constrainer u-med-push-threeUp">
+                    <div class="Grid Grid--center">
+                        <div class="Grid-cell u-hspace-oneDown">
+                            <editable class="Todo-text" placeholder="Enter the title of your todo" v-model="value.text" v-bind:edit-flag="value.isEditing" v-on:editable-key-up="checkTodo" v-on:non-editable-click="editTodo" v-bind:maxlength="200" v-click-outside="stopEditingTodo">{{value.text}}</editable>
+                        </div>
+                        <div class="Grid-cell--autoSize">
+                            <input v-bind:class="{ 'u-visibility-hidden': value.isEditing}" type="checkbox" class="Todo-checkbox" v-model="value.isCompleted" v-on:change="checkTodoCompleteStatus">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </script>
+
+        <script type="text/x-template" id="vue_tmpl_editable">
+            <textarea v-if="editFlag" rows="1" v-on:keyup="editableKeyUpHandler" maxlength="maxlength"><slot></slot></textarea>
+            <div v-else v-on:dblclick="nonEditableClickHandler"><slot></slot></div>
+        </script>
+
+        <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+
+        <script src="/assets/js/autosize.min.js"></script>
+
+        <script src="/assets/js/dragula.min.js"></script>
+
+        <script src="/assets/js/vue.min.js"></script>
+
+        <script src="/assets/js/main.min.js"></script>
+    </body>
+</html>
